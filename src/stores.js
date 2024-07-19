@@ -1,23 +1,7 @@
 import { readable } from "svelte/store";
 import axios from "axios";
+
 const url = "http://localhost:1880";
-
-
-/**
- * Generates a pseudo-unique-random id.
- * copy from @node-red/util
- * @return {String} a random-ish id
- * @memberof @node-red/util_util
- */
-function generateId() {
-    const bytes = [];
-    for (let i=0;i<8;i++) {
-        bytes.push(Math.round(0xff*Math.random()).toString(16).padStart(2,'0'));
-    }
-    return bytes.join("");
-}
-
-
 
 async function getFlows() {
 	try {
@@ -36,13 +20,6 @@ async function getFlows() {
 }
 const flows = await getFlows();
 
-class Flow  {
-	id = generateId();
-	label = "";
-	nodes = [];
-	configs = [];
-};
-
 async function addFlow() {
 	try {
 		const response = await axios.post( url + "/flows",{
@@ -60,9 +37,9 @@ async function addFlow() {
 		console.error(error);
 		return null;
 	}
+}
 
 // console.log(flows);
-console.log(generateId());
 const nodered = {
 	tabs: filter(flows,"type","tab"),
 	groups: filter(flows,"type","group"),
