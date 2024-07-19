@@ -16,7 +16,10 @@ export interface Base {
 	name: string;
 	type: string;
 	// INFO: getId,name fn
+<<<<<<< HEAD
 	(): [string,string];
+=======
+>>>>>>> 903b531 (feat: base for node creation)
 }
 
 export interface NodeBase extends Base {
@@ -25,5 +28,8 @@ export interface NodeBase extends Base {
 	z: string;
 	g?: string;
 	wires?: string[][];
+<<<<<<< HEAD
 	(): [string,string]=> [super.id,super.name];
+=======
+>>>>>>> 903b531 (feat: base for node creation)
 }
